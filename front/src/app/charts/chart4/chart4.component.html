@@ -1,0 +1,40 @@
+<div class="chart-container">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Chart 4: Time Series Analysis</h5>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-8">
+          <label class="form-label fw-bold">Industry</label>
+          <select 
+            class="form-select" 
+            [(ngModel)]="selectedIndustry" 
+            (change)="onSelectionChange()">
+            <option value="">Select Industry</option>
+            <option *ngFor="let industry of industries" [value]="industry.id">
+              {{industry.name}}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+          <button 
+            class="btn btn-primary w-100"
+            [disabled]="!showLoadButton || loading"
+            (click)="loadChart()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+            {{ loading ? 'Loading...' : 'Load Chart' }}
+          </button>
+        </div>
+      </div>
+      
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        <strong>Error:</strong> {{ errorMessage }}
+      </div>
+      
+      <div class="chart-wrapper border rounded" style="height: 450px; position: relative; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+        <canvas #canvas style="display: block; width: 100%; height: 100%;"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

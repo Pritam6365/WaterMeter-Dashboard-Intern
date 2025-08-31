@@ -1,0 +1,17 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead *ngIf="rowData.length > 0">
+      <tr>
+        <th *ngFor="let col of rowData[0] | keyvalue">{{ col.key }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rowData">
+        <td *ngFor="let col of row | keyvalue">{{ col.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="rowData.length === 0" class="text-muted p-3">
+    No data available.
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="chart-container">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Chart 5: Enhanced Monthly Analysis</h5>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <label class="form-label">Industry</label>
+          <select 
+            class="form-select" 
+            [(ngModel)]="selectedIndustry" 
+            (change)="onSelectionChange()">
+            <option value="">Select Industry</option>
+            <option *ngFor="let industry of industries" [value]="industry.id">
+              {{industry.name}}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Year</label>
+          <select 
+            class="form-select" 
+            [(ngModel)]="selectedYear" 
+            (change)="onSelectionChange()">
+            <option value="">Select Year</option>
+            <option *ngFor="let year of years" [value]="year.id">
+              {{year.name}}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <!-- <label class="form-label">Chart Type</label>
+          <select 
+            class="form-select" 
+            [(ngModel)]="selectedChartType" 
+            (change)="onChartOptionChange()">
+            <option *ngFor="let type of chartTypes" [value]="type.id">
+              {{type.name}}
+            </option>
+          </select> -->
+        </div>
+        <div class="col-md-2">
+          <!-- <label class="form-label">Sort</label>
+          <select 
+            class="form-select" 
+            [(ngModel)]="selectedSortOption" 
+            (change)="onChartOptionChange()">
+            <option *ngFor="let option of sortOptions" [value]="option.id">
+              {{option.name}}
+            </option>
+          </select> -->
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button 
+            class="btn btn-success w-100"
+            [disabled]="!showLoadButton || loading"
+            (click)="loadChart()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+            {{ loading ? 'Loading...' : 'Load Chart' }}
+          </button>
+        </div>
+      </div>
+      
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        <strong>Error:</strong> {{ errorMessage }}
+      </div>
+      
+      <div class="chart-wrapper" style="height: 400px; position: relative;">
+        <canvas #canvas></canvas>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="chart-container">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Chart 2: Division vs Industry Consumption</h5>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-8">
+          <label class="form-label">Year</label>
+          <select 
+            class="form-select" 
+            [(ngModel)]="selectedYear" 
+            (change)="onSelectionChange()">
+            <option value="">Select Year</option>
+            <option *ngFor="let year of years" [value]="year.id">
+              {{year.name}}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+          <button 
+            class="btn btn-success w-100"
+            [disabled]="!showLoadButton || loading"
+            (click)="loadChart()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+            {{ loading ? 'Loading...' : 'Load Chart' }}
+          </button>
+        </div>
+      </div>
+      
+      <div class="chart-wrapper" style="height: 400px; position: relative;">
+        <canvas #canvas></canvas>
+      </div>
+    </div>
+  </div>
+</div>

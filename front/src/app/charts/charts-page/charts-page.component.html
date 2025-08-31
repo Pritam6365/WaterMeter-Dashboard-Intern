@@ -1,0 +1,17 @@
+<div class="btn-group mb-3" role="group">
+  <button type="button" class="btn btn-outline-primary" [class.active]="activeChart===1" (click)="activeChart=1">Chart 1</button>
+  <button type="button" class="btn btn-outline-primary" [class.active]="activeChart===2" (click)="activeChart=2">Chart 2</button>
+  <button type="button" class="btn btn-outline-primary" [class.active]="activeChart===3" (click)="activeChart=3">Chart 3</button>
+  <button type="button" class="btn btn-outline-primary" [class.active]="activeChart===4" (click)="activeChart=4">Chart 4</button>
+  <button type="button" class="btn btn-outline-primary" [class.active]="activeChart===5" (click)="activeChart=5">Chart 5</button>
+  <button type="button" class="btn btn-outline-primary" [class.active]="activeChart===6" (click)="activeChart=6">Chart 6</button>
+</div>
+
+<section>
+  <app-chart1 *ngIf="activeChart === 1"></app-chart1>
+  <app-chart2 *ngIf="activeChart === 2"></app-chart2>
+  <app-chart3 *ngIf="activeChart === 3"></app-chart3>
+  <app-chart4 *ngIf="activeChart === 4"></app-chart4>
+  <app-chart5 *ngIf="activeChart === 5"></app-chart5>
+  <app-chart6 *ngIf="activeChart === 6"></app-chart6>
+</section>

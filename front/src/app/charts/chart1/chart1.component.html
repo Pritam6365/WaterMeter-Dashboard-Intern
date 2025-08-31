@@ -1,0 +1,68 @@
+<div class="chart-container">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Chart 1: Industry vs Industry Consumption</h5>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Division</label>
+          <select 
+            class="form-select" 
+            [(ngModel)]="selectedDivision" 
+            (change)="onSelectionChange()"
+            [disabled]="divisions.length === 0">
+            <option value="">{{ divisions.length > 0 ? 'Select Division' : 'Loading divisions...' }}</option>
+            <option *ngFor="let division of divisions" [value]="division.id">
+              {{ division.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Year</label>
+          <select 
+            class="form-select" 
+            [(ngModel)]="selectedYear" 
+            (change)="onSelectionChange()"
+            [disabled]="years.length === 0">
+            <option value="">{{ years.length > 0 ? 'Select Year' : 'Loading years...' }}</option>
+            <option *ngFor="let year of years" [value]="year.id">
+              {{ year.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+          <button 
+            class="btn btn-primary w-100"
+            [disabled]="!showLoadButton || loading"
+            (click)="loadChart()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+            {{ loading ? 'Loading...' : 'Load Chart' }}
+          </button>
+        </div>
+      </div>
+      
+      <!-- Enhanced Error Message -->
+      <div *ngIf="errorMessage" class="alert alert-danger d-flex align-items-center" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div class="flex-grow-1">
+          <strong>Error:</strong> {{ errorMessage }}
+        </div>
+        <button class="btn btn-outline-danger btn-sm ms-2" (click)="retry()">
+          <i class="bi bi-arrow-clockwise me-1"></i> Retry
+        </button>
+      </div>
+      
+      <!-- Connection Status
+      <div *ngIf="!errorMessage && connectionTested" class="alert alert-success mb-3">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        Server connection successful. Loaded {{ divisions.length }} divisions and {{ years.length }} years.
+      </div> -->
+      
+      <!-- Chart Canvas -->
+      <div class="chart-wrapper" style="height: 400px; position: relative;">
+        <canvas #canvas></canvas>
+      </div>
+    </div>
+  </div>
+</div>

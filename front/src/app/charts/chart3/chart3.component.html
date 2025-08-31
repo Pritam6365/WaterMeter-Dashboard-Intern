@@ -1,0 +1,17 @@
+<div class="card h-100">
+  <div class="card-header">
+    <div class="row g-2 align-items-end">
+      <div class="col">
+        <label class="form-label">Industry</label>
+        <app-dropdown [options]="industries" placeholder="Select Industry"
+                      (select)="selectedIndustry = $event"></app-dropdown>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-primary" (click)="fetchChart()">Load</button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body" style="height: 360px;">
+    <canvas #canvas></canvas>
+  </div>
+</div>

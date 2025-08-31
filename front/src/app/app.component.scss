@@ -1,0 +1,38 @@
+.app-wrapper {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 280px; /* Width of sidebar */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.navbar-custom {
+  position: fixed;
+  top: 0;
+  left: 280px; /* Start after sidebar */
+  right: 0;
+  z-index: 1020;
+  background-color: #0d6efd;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.content-area {
+  flex: 1;
+  padding: 80px 20px 20px 20px; /* Top padding for fixed navbar */
+  overflow-y: auto;
+  background-color: #f8f9fa;
+}
+
+/* Global styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

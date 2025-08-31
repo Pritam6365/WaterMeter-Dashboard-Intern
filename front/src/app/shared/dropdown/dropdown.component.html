@@ -1,0 +1,6 @@
+<select class="form-select" (change)="onChange($event)">
+  <option value="">{{ placeholder }}</option>
+  <option *ngFor="let opt of options" [value]="opt[valueKey]">
+    {{ opt[labelKey] }}
+  </option>
+</select>
